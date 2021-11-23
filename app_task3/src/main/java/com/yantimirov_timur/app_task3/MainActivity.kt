@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     var img: Drawable = DrawableContainer()
     lateinit var job: Job
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

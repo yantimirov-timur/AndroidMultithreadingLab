@@ -12,17 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Fresco.initialize(this)
         setContentView(R.layout.activity_main)
-
-        val uri: Uri =
-            Uri.parse("https://storge.pic2.me/cm/2560x1440/346/556612eab5b78.jpg")
-
+        val uri: Uri = Uri.parse("https://storge.pic2.me/cm/2560x1440/346/556612eab5b78.jpg")
         val drawView = findViewById<SimpleDraweeView>(R.id.my_image_view)
-
         val button = findViewById<Button>(R.id.btn)
         button.setOnClickListener {
-
             drawView.setImageURI(uri, this)
         }
-
     }
 }

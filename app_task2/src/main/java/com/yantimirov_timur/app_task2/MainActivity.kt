@@ -10,10 +10,8 @@ import android.util.Log
 import android.view.Menu
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import java.io.BufferedInputStream
 import java.net.URL
-import java.time.Duration
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button: Button
     private lateinit var executorService: ExecutorService
     private val address = "https://storge.pic2.me/cm/2560x1440/346/556612eab5b78.jpg"
-    var img: Drawable = DrawableContainer()
+    private var img: Drawable = DrawableContainer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         executorService = Executors.newSingleThreadExecutor()
 
         button.setOnClickListener {
-            downloadInBackground { result ->
+            downloadImageInBackground { result ->
                 runOnUiThread {
                     setImage(result)
                 }
@@ -46,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    private fun downloadInBackground(callback: (result: Drawable) -> Unit) {
+    private fun downloadImageInBackground(callback: (result: Drawable) -> Unit) {
         executorService.execute {
             img = downloadImage(address)
             callback(img)

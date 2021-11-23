@@ -10,11 +10,5 @@ import android.widget.Toast
 import java.util.concurrent.*
 
 class MyApp : Application() {
-    //val executorService = Executors.newFixedThreadPool(4)
-
-    private val NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors()
-    private val KEEP_ALIVE_TIME = 1
-    private val KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS
-
-
+    val singleThreadExecutor: ExecutorService = Executors.newSingleThreadExecutor()
 }

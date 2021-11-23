@@ -13,15 +13,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textSecondsElapsed: TextView
     private lateinit var handler: Handler
     private var shutDowned = false
-    private lateinit var singleThreadExecutor: ExecutorService
+    private lateinit var singleThreadExecutor:ExecutorService
 
     private fun runSingleThreadExecutor() {
-        singleThreadExecutor = Executors.newSingleThreadExecutor()
+        singleThreadExecutor = MyApp().singleThreadExecutor
         singleThreadExecutor.execute(object : Runnable {
             override fun run() {
                 if (!shutDowned) {
                     textSecondsElapsed.post {
-                        Log.d("Executor", "executed")
+                        Log.d("Executor", "is execute")
                         textSecondsElapsed.text =
                             getString(R.string.second_elapsed, secondsElapsed++)
                     }
@@ -41,12 +41,23 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         shutDowned = false
         runSingleThreadExecutor()
+        Log.d("App", "is open")
         super.onResume()
     }
 
     override fun onPause() {
         singleThreadExecutor.shutdown()
         shutDowned = singleThreadExecutor.isShutdown
+        Log.d("App", "is collapsed")
         super.onPause()
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(getString(R.string.second_elapsed), secondsElapsed)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        secondsElapsed = savedInstanceState.getInt(getString(R.string.second_elapsed))
+        super.onRestoreInstanceState(savedInstanceState)
     }
 }

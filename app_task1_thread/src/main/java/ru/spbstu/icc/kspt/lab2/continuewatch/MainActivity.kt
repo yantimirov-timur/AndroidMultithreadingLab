@@ -54,4 +54,14 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(getString(R.string.second_elapsed), secondsElapsed)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        secondsElapsed = savedInstanceState.getInt(getString(R.string.second_elapsed))
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
 }
