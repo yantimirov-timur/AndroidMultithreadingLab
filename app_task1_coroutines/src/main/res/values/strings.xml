@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">ContinueWatchExec</string>
+    <string name="app_name">Continue Watch</string>
     <string name="second_elapsed"> Second Elapsed:, %d </string>
 </resources>
