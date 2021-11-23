@@ -1,11 +1,13 @@
-**Continue Watch(app_task1_*)** 
+## Continue Watch(app_task1_*)
 * Приложение считает секунды, когда оно отображается на экране
 * Приложение не считает секунды, когда оно не отображается на экране
-* Асинхронность с помощью: Thread, Executor Service, Coroutines
+
+*Асинхронность с помощью: Thread, Executor Service, Coroutines*
 
 _PS: continuewatch - это ассоциация автора на слово stopwatch. Приложение не является
 традиционным stopwatch (секундомером), но чем-то на него похоже._
 
-**Image Downloader(app_task2)**
+## Image Downloader(app_task2)
 * Приложение скачивает картинку из интернета и покаызает на экране
-* Асинхронность с помощью Executor Service
+
+*Асинхронность с помощью Executor Service*
