@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         imageView = findViewById(R.id.imageView)
         button = findViewById(R.id.download_btn)
-        executorService = Executors.newSingleThreadExecutor()
+        executorService = DownloaderImageApp().singleThreadExecutor
 
         button.setOnClickListener {
             downloadImageInBackground { result ->

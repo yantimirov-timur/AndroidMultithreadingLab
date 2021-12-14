@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
             textSecondsElapsed.post {
                 textSecondsElapsed.text = getString(R.string.second_elapsed, secondsElapsed++)
             }
+            Log.d("Time", "${System.currentTimeMillis()}")
             handler.postDelayed(this, 1000)
         }
     }
