@@ -18,7 +18,7 @@ import java.util.concurrent.Executors
 class MainActivity : AppCompatActivity() {
     private lateinit var imageView: ImageView
     private lateinit var button: Button
-    private lateinit var executorService: ExecutorService
+    private lateinit var executorService: ExecutorService // = DownloaderImageApp().singleThreadExecutor
     private val address = "https://storge.pic2.me/cm/2560x1440/346/556612eab5b78.jpg"
     private var img: Drawable = DrawableContainer()
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         imageView = findViewById(R.id.imageView)
         button = findViewById(R.id.download_btn)
-        executorService = DownloaderImageApp().singleThreadExecutor
+        executorService = (application as DownloaderImageApp).singleThreadExecutor
 
         button.setOnClickListener {
             downloadImageInBackground { result ->

@@ -21,12 +21,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun runTimer() {
-        job = CoroutineScope(Dispatchers.Default).launch {
-            Log.d("Coroutine","is working")
+        job = MainScope().launch {
             while (true) {
-                textSecondsElapsed.post {
-                    textSecondsElapsed.text = getString(R.string.second_elapsed, secondsElapsed++)
-                }
+                textSecondsElapsed.text = getString(R.string.second_elapsed, secondsElapsed++)
+                Log.d("Coroutine", "is working")
                 delay(1000L)
             }
         }
@@ -34,13 +32,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.d("App","is open")
+        Log.d("App", "is open")
         runTimer()
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("App","is collapse")
+        Log.d("App", "is collapse")
         job.cancel()
     }
 

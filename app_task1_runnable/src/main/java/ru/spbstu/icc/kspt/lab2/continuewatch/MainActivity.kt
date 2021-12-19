@@ -16,10 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private val backgroundThread = object : Runnable {
         override fun run() {
-            textSecondsElapsed.post {
-                textSecondsElapsed.text = getString(R.string.second_elapsed, secondsElapsed++)
-            }
-            Log.d("Time", "${System.currentTimeMillis()}")
+            textSecondsElapsed.text = getString(R.string.second_elapsed, secondsElapsed++)
             handler.postDelayed(this, 1000)
         }
     }

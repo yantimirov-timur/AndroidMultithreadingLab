@@ -11,4 +11,8 @@ import java.util.concurrent.*
 
 class MyApp : Application() {
     val singleThreadExecutor: ExecutorService = Executors.newSingleThreadExecutor()
+
+    init {
+        Log.d("app", "created")
+    }
 }
