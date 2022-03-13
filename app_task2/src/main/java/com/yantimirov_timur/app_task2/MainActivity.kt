@@ -13,7 +13,6 @@ import android.widget.ImageView
 import java.io.BufferedInputStream
 import java.net.URL
 import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
     private lateinit var imageView: ImageView
@@ -36,7 +35,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -44,10 +42,10 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    private fun downloadImageInBackground(callback: (result: Drawable) -> Unit) {
+    private fun downloadImageInBackground(setResult: (result: Drawable) -> Unit) {
         executorService.execute {
             img = downloadImage(address)
-            callback(img)
+            setResult(img)
             Log.d("Image", "Downloaded")
         }
         executorService.shutdown()

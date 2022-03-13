@@ -7,6 +7,9 @@ import android.view.Menu
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.viewModels
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         imageView = findViewById(R.id.imageView)
         button = findViewById(R.id.download_btn)
